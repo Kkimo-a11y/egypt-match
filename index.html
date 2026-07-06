@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جاري تجهيز رابط البث المباشر</title>
     <style>
-        /* الألوان مصممة خصيصاً لتكون مريحة جداً للعين */
+        /* الألوان مصممة لتكون مريحة جداً للعين */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #121824; /* خلفية داكنة هادية مائلة للكحلي */
@@ -51,10 +51,17 @@
             min-width: 150px;
         }
 
-        /* تصميم زر الانتقال */
+        /* حاوية الأزرار لجعلها تظهر تحت بعضها بشكل منظم */
+        .buttons-container {
+            display: none; /* مخفية في البداية */
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        /* تصميم الأزرار */
         .btn {
-            display: none; /* مخفي في البداية */
-            background-color: #10b981; /* لون أخضر مريح يعبر عن الملاعب والانتقال الناجح */
+            display: block;
             color: white;
             padding: 14px 28px;
             font-size: 18px;
@@ -63,12 +70,28 @@
             border-radius: 8px;
             transition: background 0.3s ease, transform 0.2s ease;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
 
         .btn:hover {
-            background-color: #059669;
             transform: translateY(-2px);
+        }
+
+        /* زر الرابط الأول (أخضر احترافي) */
+        .btn-primary {
+            background-color: #10b981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #059669;
+        }
+
+        /* زر الرابط الثاني (أزرق هادي ومميز) */
+        .btn-secondary {
+            background-color: #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        .btn-secondary:hover {
+            background-color: #1d4ed8;
         }
     </style>
 </head>
@@ -78,27 +101,33 @@
         <h1>أهلاً بك في موقعنا</h1>
         <p>جاري تجهيز روابط البث المباشر لمباراة منتخب مصر بجودة عالية وبدون تقطيع...</p>
         
-        <!-- العداد التنازلي -->
+        <!-- العداد التنازلي (تم تعديله لـ 3 ثوانٍ) -->
         <div id="timer-container" class="timer-box">
-            انتظر <span id="countdown">5</span> ثوانٍ...
+            انتظر <span id="countdown">3</span> ثوانٍ...
         </div>
 
-        <!-- زر الانتقال للماتش (سيظهر بعد انتهاء العداد) -->
-        <a href="https://pelotaalibre.su/home.php" id="match-link" class="btn">اضغط هنا للانتقال للبث المباشر</a>
+        <!-- أزرار الانتقال (ستظهر معاً بعد انتهاء العداد) -->
+        <div id="buttons-group" class="buttons-container">
+            <!-- الرابط الأول الحالي -->
+            <a href="https://pelotaalibre.su/home.php" class="btn btn-primary">اضغط هنا للانتقال للبث المباشر (سيرفر 1)</a>
+            
+            <!-- الرابط الثاني المضاف حديثاً -->
+            <a href="https://pirlotv.st/" class="btn btn-secondary">اضغط هنا للانتقال للبث المباشر (سيرفر 2)</a>
+        </div>
     </div>
 
     <script>
-        // كود الجافا سكريبت للتحكم في العداد وظهور الزر
-        let timeLeft = 5; // عدد الثواني
+        // التحكم في العداد وظهور الأزرار
+        let timeLeft = 3; // عدد الثواني أصبح 3
         const countdownElement = document.getElementById('countdown');
         const timerContainer = document.getElementById('timer-container');
-        const matchLink = document.getElementById('match-link');
+        const buttonsGroup = document.getElementById('buttons-group');
 
         const downloadTimer = setInterval(() => {
             if (timeLeft <= 0) {
                 clearInterval(downloadTimer);
                 timerContainer.style.display = 'none'; // إخفاء العداد
-                matchLink.style.display = 'inline-block'; // إظهار الزر
+                buttonsGroup.style.display = 'flex'; // إظهار حاوية الأزرار كـ Flex لتظهر مرتبة
             } else {
                 countdownElement.textContent = timeLeft;
             }
@@ -107,4 +136,8 @@
     </script>
 
 </body>
-</html>
+</html>"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+print("Updated successfully.")
