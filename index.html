@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جاري تجهيز رابط البث المباشر</title>
+    <style>
+        /* الألوان مصممة خصيصاً لتكون مريحة جداً للعين */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121824; /* خلفية داكنة هادية مائلة للكحلي */
+            color: #e2e8f0; /* كتابة باللون الأبيض العاجي المريح */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #1e293b; /* صندوق المحتوى أفتح قليلاً ليعطي أبعاداً مريحة */
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #38bdf8; /* لون أزرق سماوي هادي ومميز */
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #94a3b8; /* لون رمادي فاتح للنصوص الفرعية */
+        }
+
+        .timer-box {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f59e0b; /* لون برتقالي هادي للعداد */
+            margin: 25px 0;
+            background: #2d3748;
+            padding: 12px;
+            border-radius: 8px;
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        /* تصميم زر الانتقال */
+        .btn {
+            display: none; /* مخفي في البداية */
+            background-color: #10b981; /* لون أخضر مريح يعبر عن الملاعب والانتقال الناجح */
+            color: white;
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>أهلاً بك في موقعنا</h1>
+        <p>جاري تجهيز روابط البث المباشر لمباراة منتخب مصر بجودة عالية وبدون تقطيع...</p>
+        
+        <!-- العداد التنازلي -->
+        <div id="timer-container" class="timer-box">
+            انتظر <span id="countdown">5</span> ثوانٍ...
+        </div>
+
+        <!-- زر الانتقال للماتش (سيظهر بعد انتهاء العداد) -->
+        <a href="https://pelotaalibre.su/home.php" id="match-link" class="btn">اضغط هنا للانتقال للبث المباشر</a>
+    </div>
+
+    <script>
+        // كود الجافا سكريبت للتحكم في العداد وظهور الزر
+        let timeLeft = 5; // عدد الثواني
+        const countdownElement = document.getElementById('countdown');
+        const timerContainer = document.getElementById('timer-container');
+        const matchLink = document.getElementById('match-link');
+
+        const downloadTimer = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(downloadTimer);
+                timerContainer.style.display = 'none'; // إخفاء العداد
+                matchLink.style.display = 'inline-block'; // إظهار الزر
+            } else {
+                countdownElement.textContent = timeLeft;
+            }
+            timeLeft -= 1;
+        }, 1000);
+    </script>
+
+</body>
+</html>
