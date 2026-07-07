@@ -1,88 +1,72 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta name="google-site-verification" content="QD-l3WxH3M4bQYHBCwvy1Qp8BORpAGbtj4obJQLHrPg" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جاري تجهيز رابط البث المباشر</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a; /* لون غامق مريح جداً للعين */
-            color: #f8fafc;
+            background-color: #121824; 
+            color: #e2e8f0; 
             margin: 0;
-            padding: 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            min-height: 100vh;
-        }
-
-        .header-title {
-            color: #38bdf8;
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            height: 100vh;
             text-align: center;
+            overflow: hidden;
         }
 
-        .main-layout {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* مكان البانر العلوي */
-        .top-banner {
-            width: 100%;
-            max-width: 728px;
-            height: 90px;
-            background-color: #1e293b;
-            border: 1px dashed #38bdf8;
-            border-radius: 8px;
-            display: block;
-            margin: 0 auto 25px auto;
-            text-align: center;
-            line-height: 90px;
-            color: #64748b;
-            font-weight: bold;
-        }
-
-        .content-area {
-            width: 100%;
-            text-align: center;
-        }
-
-        /* حاوي المحتوى الأصلي */
         .container {
-            background-color: #1e293b;
+            background-color: #1e293b; 
             padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            display: inline-block;
-            width: 100%;
-            max-width: 600px;
-            vertical-align: top;
-            box-sizing: border-box;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 90%;
+            z-index: 2;
         }
 
-        .timer {
+        h1 {
+            color: #38bdf8; 
             font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #94a3b8; 
+        }
+
+        .timer-box {
+            font-size: 18px;
             font-weight: bold;
-            color: #ef4444;
-            margin: 20px 0;
+            color: #f59e0b; 
+            margin: 25px 0;
+            background: #2d3748;
+            padding: 12px;
+            border-radius: 8px;
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        .buttons-container {
+            display: none; 
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .btn {
             display: block;
             color: white;
-            padding: 16px 30px;
-            font-size: 22px;
+            padding: 14px 28px;
+            font-size: 18px;
             font-weight: bold;
             text-decoration: none;
             border-radius: 8px;
-            margin: 15px auto;
-            max-width: 80%;
             transition: background 0.3s ease, transform 0.2s ease;
             cursor: pointer;
         }
@@ -91,134 +75,56 @@
             transform: translateY(-2px);
         }
 
-        .btn-disabled {
-            background-color: #475569;
-            cursor: not-allowed;
-        }
-
-        .btn-go {
-            background-color: #2563eb;
-        }
-        .btn-go:hover {
-            background-color: #1d4ed8;
-        }
-
-        .btn-link {
+        .btn-primary {
             background-color: #10b981;
-            display: none; /* مخفي وهيظهر بعد العداد */
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
-        .btn-link:hover {
+        .btn-primary:hover {
             background-color: #059669;
         }
 
-        /* البنرات الجانبية */
-        .side-banner {
-            width: 100%;
-            max-width: 160px;
-            height: 600px;
-            background-color: #1e293b;
-            border: 1px dashed #38bdf8;
-            border-radius: 8px;
-            margin: 20px auto;
-            text-align: center;
-            line-height: 600px;
-            color: #64748b;
-            font-weight: bold;
+        .btn-secondary {
+            background-color: #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
-
-        @media (min-width: 1150px) {
-            .main-layout {
-                position: relative;
-                padding: 0 180px;
-                box-sizing: border-box;
-            }
-            .container {
-                width: 100%;
-            }
-            .side-banner {
-                position: absolute;
-                top: 115px;
-                margin: 0;
-            }
-            .side-left {
-                left: 0;
-            }
-            .side-right {
-                right: 0;
-            }
+        .btn-secondary:hover {
+            background-color: #1d4ed8;
         }
     </style>
 </head>
 <body>
 
-    <div class="main-layout">
+    <div class="container">
+        <h1>أهلاً بك في موقعنا</h1>
+        <p>جاري تجهيز روابط البث المباشر لمباراة منتخب مصر بجودة عالية وبدون تقطيع...</p>
         
-        <!-- 1️⃣ مكان البانر الإعلاني العلوي -->
-        <div class="top-banner">
-            مكان إعلان بنر علوي (728x90)
+        <div id="timer-container" class="timer-box">
+            انتظر <span id="countdown">3</span> ثوانٍ...
         </div>
 
-        <div class="content-area">
-            
-            <!-- 2️⃣ مكان البانر الجانبي الأيمن -->
-            <div class="side-banner side-right">
-                إعلان جانبي (160x600)
-            </div>
-
-            <!-- المحتوى الأصلي بتاعك -->
-            <div class="container">
-                <h1 class="header-title">جاري تجهيز رابط البث المباشر...</h1>
-                
-                <!-- عداد الوقت الأصلي -->
-                <div class="timer" id="countdown">انتظر 15 ثانية...</div>
-                
-                <!-- زرار الانتقال لأسفل الصفحة -->
-                <button id="go-down-btn" class="btn btn-disabled" disabled onclick="scrollToBottom()">الرجاء الانتظار...</button>
-                
-                <div style="height: 300px;"></div> <!-- مسافة للننزول تحت -->
-
-                <!-- زرار الرابط النهائي اللي بيفتح موقع الاختصار بتاعك صح -->
-                <a href="https://shrinkme.click/iUJDp" id="final-link" class="btn btn-link" target="_blank">اضغط هنا لمشاهدة المباراة الآن</a>
-            </div>
-
-            <!-- 3️⃣ مكان البانر الجانبي الأيسر -->
-            <div class="side-banner side-left">
-                إعلان جانبي (160x600)
-            </div>
-
+        <div id="buttons-group" class="buttons-container">
+            <a href="https://pelotaalibre.su/home.php" class="btn btn-primary">اضغط هنا للانتقال للبث المباشر (سيرفر 1)</a>
+            <a href="https://pirlotv.st/" class="btn btn-secondary">اضغط هنا للانتقال للبث المباشر (سيرفر 2)</a>
         </div>
     </div>
 
     <script>
-        let timeLeft = 15;
-        const countdownEl = document.getElementById('countdown');
-        const goDownBtn = document.getElementById('go-down-btn');
-        const finalLink = document.getElementById('final-link');
+        let timeLeft = 3; 
+        const countdownElement = document.getElementById('countdown');
+        const timerContainer = document.getElementById('timer-container');
+        const buttonsGroup = document.getElementById('buttons-group');
 
-        const timer = setInterval(() => {
-            timeLeft--;
-            if (timeLeft > 0) {
-                countdownEl.innerText = `انتظر ${timeLeft} ثانية...`;
+        const downloadTimer = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(downloadTimer);
+                timerContainer.style.display = 'none'; 
+                buttonsGroup.style.display = 'flex'; 
             } else {
-                clearInterval(timer);
-                countdownEl.innerText = "الرابط جاهز الآن!";
-                countdownEl.style.color = "#10b981";
-                
-                // تشغيل الأزرار بعد انتهاء الوقت
-                goDownBtn.innerText = "انتقل إلى الرابط في الأسفل";
-                goDownBtn.disabled = false;
-                goDownBtn.className = "btn btn-go";
-                
-                finalLink.style.display = "block";
+                countdownElement.textContent = timeLeft;
             }
+            timeLeft -= 1;
         }, 1000);
-
-        function scrollToBottom() {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
     </script>
+
 </body>
 </html>
