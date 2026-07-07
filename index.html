@@ -1,158 +1,163 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- كود إعلانات النافذة المنبثقة (Popunder) الأساسي الخاص بك -->
     <script src="https://pl30246075.effectivecpmnetwork.com/1b/3d/9b/1b3d9b94982b39f79713f253131b0f5e.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جاري تجهيز رابط البث المباشر</title>
+    <title>جدول مواعيد مباريات اليوم والقنوات الناقلة - تحديث مستمر</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121824; 
-            color: #e2e8f0; 
+            background-color: #0f172a; 
+            color: #f1f5f9; 
             margin: 0;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            padding: 10px;
             box-sizing: border-box;
         }
 
-        .main-layout {
+        .main-container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        /* بنر الكمبيوتر العلوي */
-        .top-banner-desktop {
+        header {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #1e293b;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 20px;
+            color: #38bdf8;
+            margin: 0 0 5px 0;
+        }
+
+        header p {
+            font-size: 13px;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        /* تنسيق مساحات الإعلانات الذكية */
+        .ad-desktop {
             display: none;
             width: 100%;
             max-width: 728px;
             min-height: 90px;
-            margin: 0 auto 20px auto;
+            margin: 10px auto;
         }
 
-        /* بنر الموبايل العلوي */
-        .top-banner-mobile {
+        .ad-mobile {
             display: block;
             width: 100%;
             max-width: 320px;
             min-height: 50px;
-            margin: 0 auto 20px auto;
+            margin: 10px auto;
         }
 
-        .content-area {
-            width: 100%;
+        /* تصنيفات البطولات */
+        .league-section {
+            background-color: #1e293b;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .league-header {
+            background-color: #0284c7;
+            color: #ffffff;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* كارت المباراة */
+        .match-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #334155;
+            transition: background 0.2s;
+        }
+
+        .match-card:last-child {
+            border-bottom: none;
+        }
+
+        .match-card:hover {
+            background-color: #1e293b;
+        }
+
+        .team {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .team.home {
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .team.away {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .match-info {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            position: relative;
+            min-width: 110px;
+            background-color: #0f172a;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #334155;
         }
 
-        .container {
-            background-color: #1e293b; 
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 100%;
-            box-sizing: border-box;
+        .match-time {
+            font-size: 14px;
+            font-weight: bold;
+            color: #f59e0b;
+        }
+
+        .match-channel {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 4px;
             text-align: center;
         }
 
-        h1 {
-            color: #38bdf8; 
-            font-size: 22px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        p {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #94a3b8; 
-        }
-
-        .timer-box {
-            font-size: 18px;
-            font-weight: bold;
-            color: #f59e0b; 
-            margin: 20px 0;
-            background: #2d3748;
-            padding: 12px;
-            border-radius: 8px;
-            display: inline-block;
-            min-width: 150px;
-        }
-
-        .buttons-container {
-            display: none; 
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .btn {
-            display: block;
-            color: white;
-            padding: 14px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.3s ease, transform 0.2s ease;
-            cursor: pointer;
-            line-height: 1.4;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background-color: #10b981;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
-        }
-        .btn-primary:hover {
-            background-color: #059669;
-        }
-
-        .btn-secondary {
-            background-color: #2563eb;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-        }
-        .btn-secondary:hover {
-            background-color: #1d4ed8;
-        }
-
-        /* الشاشات الكبيرة والكمبيوتر */
+        /* متجاوب مع الشاشات */
         @media (min-width: 768px) {
-            .top-banner-desktop {
-                display: block; 
-            }
-            .top-banner-mobile {
-                display: none; 
-            }
-            .container {
-                max-width: 600px;
-                margin: 0 auto;
-            }
+            header h1 { font-size: 26px; }
+            .ad-desktop { display: block; }
+            .ad-mobile { display: none; }
+            .team { font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-layout">
+    <div class="main-container">
         
-        <!-- إعلان الكمبيوتر الكبير 728x90 -->
-        <div class="top-banner-desktop">
+        <header>
+            <h1>مواعيد مباريات اليوم</h1>
+            <p>تابع جدول أهم مباريات اليوم والقنوات الناقلة بتحديث مستمر</p>
+        </header>
+
+        <div class="ad-desktop">
             <script>
                 atOptions = {
                     'key' : '5966c01c9c0a5f577cfae948c69e3242',
@@ -165,8 +170,7 @@
             <script src="https://www.highperformanceformat.com/5966c01c9c0a5f577cfae948c69e3242/invoke.js"></script>
         </div>
 
-        <!-- إعلان الموبايل 320x50 -->
-        <div class="top-banner-mobile">
+        <div class="ad-mobile">
             <script>
               atOptions = {
                 'key' : 'ca0b0cedb0b1ac653b11d710c29d6b90',
@@ -179,42 +183,48 @@
             <script src="https://www.highperformanceformat.com/ca0b0cedb0b1ac653b11d710c29d6b90/invoke.js"></script>
         </div>
 
-        <div class="content-area">
+        <div class="league-section">
+            <div class="league-header">
+                <span>الدوري الإنجليزي الممتاز</span>
+                <span style="font-size: 12px; color: #e0f2fe;">الأسبوع 1</span>
+            </div>
             
-            <div class="container">
-                <h1>أهلاً بك في موقعنا</h1>
-                <p>جاري تجهيز روابط البث المباشر لمباراة منتخب مصر بالتعليق العربي وبجودة عالية وبدون تقطيع...</p>
-                
-                <div id="timer-container" class="timer-box">
-                    انتظر <span id="countdown">3</span> ثوانٍ...
+            <div class="match-card">
+                <div class="team home">ليفربول</div>
+                <div class="match-info">
+                    <div class="match-time">06:00 م</div>
+                    <div class="match-channel">beIN Sports 1</div>
                 </div>
-
-                <div id="buttons-group" class="buttons-container">
-                    <a href="https://strm01.vip/?m=30716&lang=ar&d=xyzkooora4lives-co" class="btn btn-primary" target="_blank">اضغط هنا للانتقال للبث المباشر (سيرفر 1 عربي)</a>
-                    <a href="https://strm01.vip/?m=30716&lang=ar&d=xyzkooora4lives-co" class="btn btn-secondary" target="_blank">اضغط هنا للانتقال للبث المباشر (سيرفر 2 عربي)</a>
-                </div>
+                <div class="team away">تشيلسي</div>
             </div>
 
+            <div class="match-card">
+                <div class="team home">مانشستر سيتي</div>
+                <div class="match-info">
+                    <div class="match-time">08:30 م</div>
+                    <div class="match-channel">beIN Sports 2</div>
+                </div>
+                <div class="team away">آرسنال</div>
+            </div>
         </div>
+
+        <div class="league-section">
+            <div class="league-header">
+                <span>الدوري الإسباني</span>
+                <span style="font-size: 12px; color: #e0f2fe;">الأسبوع 1</span>
+            </div>
+            
+            <div class="match-card">
+                <div class="team home">برشلونة</div>
+                <div class="match-info">
+                    <div class="match-time">10:00 م</div>
+                    <div class="match-channel">beIN Sports 3</div>
+                </div>
+                <div class="team away">أتلتيكو مدريد</div>
+            </div>
+        </div>
+
     </div>
-
-    <script>
-        let timeLeft = 3; 
-        const countdownElement = document.getElementById('countdown');
-        const timerContainer = document.getElementById('timer-container');
-        const buttonsGroup = document.getElementById('buttons-group');
-
-        const downloadTimer = setInterval(() => {
-            if (timeLeft <= 0) {
-                clearInterval(downloadTimer);
-                timerContainer.style.display = 'none'; 
-                buttonsGroup.style.display = 'flex'; 
-            } else {
-                countdownElement.textContent = timeLeft;
-            }
-            timeLeft -= 1;
-        }, 1000);
-    </script>
 
 </body>
 </html>
