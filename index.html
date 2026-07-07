@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- كود إعلانات Adsterra الخاص بك -->
+    <!-- كود إعلانات النافذة المنبثقة (Popunder) الأساسي الخاص بك -->
     <script src="https://pl30246075.effectivecpmnetwork.com/1b/3d/9b/1b3d9b94982b39f79713f253131b0f5e.js"></script>
 
     <meta charset="UTF-8">
@@ -28,19 +28,22 @@
             text-align: center;
         }
 
-        .top-banner {
+        /* بنر الكمبيوتر العلوي */
+        .top-banner-desktop {
+            display: none;
             width: 100%;
             max-width: 728px;
-            height: 90px;
-            background-color: #1e293b;
-            border: 1px dashed #38bdf8;
-            border-radius: 8px;
-            display: block;
+            min-height: 90px;
             margin: 0 auto 20px auto;
-            text-align: center;
-            line-height: 90px;
-            color: #64748b;
-            font-weight: bold;
+        }
+
+        /* بنر الموبايل العلوي */
+        .top-banner-mobile {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            min-height: 50px;
+            margin: 0 auto 20px auto;
         }
 
         .content-area {
@@ -129,33 +132,17 @@
             background-color: #1d4ed8;
         }
 
-        /* إخفاء البنرات الجانبية تلقائياً في الشاشات الصغيرة والموبايل */
-        .side-banner {
-            display: none;
-            width: 160px;
-            height: 600px;
-            background-color: #1e293b;
-            border: 1px dashed #38bdf8;
-            border-radius: 8px;
-            text-align: center;
-            line-height: 600px;
-            color: #64748b;
-            font-weight: bold;
-        }
-
-        /* الشاشات الكبيرة والكمبيوتر فقط هي اللي هيظهر فيها البنرات الجانبية */
-        @media (min-width: 1150px) {
-            .content-area {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-start;
+        /* الشاشات الكبيرة والكمبيوتر */
+        @media (min-width: 768px) {
+            .top-banner-desktop {
+                display: block; 
+            }
+            .top-banner-mobile {
+                display: none; 
             }
             .container {
                 max-width: 600px;
                 margin: 0 auto;
-            }
-            .side-banner {
-                display: block; /* تظهر هنا بس */
             }
         }
     </style>
@@ -164,16 +151,36 @@
 
     <div class="main-layout">
         
-        <div class="top-banner">
-            مكان إعلان بنر علوي (728x90)
+        <!-- إعلان الكمبيوتر الكبير 728x90 -->
+        <div class="top-banner-desktop">
+            <script>
+                atOptions = {
+                    'key' : '5966c01c9c0a5f577cfae948c69e3242',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/5966c01c9c0a5f577cfae948c69e3242/invoke.js"></script>
+        </div>
+
+        <!-- إعلان الموبايل 320x50 -->
+        <div class="top-banner-mobile">
+            <script>
+              atOptions = {
+                'key' : 'ca0b0cedb0b1ac653b11d710c29d6b90',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/ca0b0cedb0b1ac653b11d710c29d6b90/invoke.js"></script>
         </div>
 
         <div class="content-area">
             
-            <div class="side-banner">
-                إعلان جانبي (160x600)
-            </div>
-
             <div class="container">
                 <h1>أهلاً بك في موقعنا</h1>
                 <p>جاري تجهيز روابط البث المباشر لمباراة منتخب مصر بالتعليق العربي وبجودة عالية وبدون تقطيع...</p>
@@ -186,10 +193,6 @@
                     <a href="https://strm01.vip/?m=30716&lang=ar&d=xyzkooora4lives-co" class="btn btn-primary" target="_blank">اضغط هنا للانتقال للبث المباشر (سيرفر 1 عربي)</a>
                     <a href="https://strm01.vip/?m=30716&lang=ar&d=xyzkooora4lives-co" class="btn btn-secondary" target="_blank">اضغط هنا للانتقال للبث المباشر (سيرفر 2 عربي)</a>
                 </div>
-            </div>
-
-            <div class="side-banner">
-                إعلان جانبي (160x600)
             </div>
 
         </div>
