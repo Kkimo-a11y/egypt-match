@@ -10,14 +10,44 @@
             background-color: #121824; 
             color: #e2e8f0; 
             margin: 0;
+            padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            text-align: center;
-            overflow: hidden;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
+        .main-layout {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* مكان البانر العلوي */
+        .top-banner {
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background-color: #1e293b;
+            border: 1px dashed #38bdf8;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 25px auto;
+            text-align: center;
+            line-height: 90px;
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        .content-area {
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        /* حاوي المحتوى الأصلي بتاعك */
         .container {
             background-color: #1e293b; 
             padding: 30px;
@@ -25,13 +55,17 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             max-width: 450px;
             width: 90%;
-            z-index: 2;
+            display: inline-block;
+            box-sizing: border-box;
+            text-align: center;
+            vertical-align: top;
         }
 
         h1 {
             color: #38bdf8; 
             font-size: 24px;
             margin-bottom: 15px;
+            font-weight: bold;
         }
 
         p {
@@ -90,21 +124,82 @@
         .btn-secondary:hover {
             background-color: #1d4ed8;
         }
+
+        /* البنرات الجانبية يمين ويسار */
+        .side-banner {
+            width: 100%;
+            max-width: 160px;
+            height: 600px;
+            background-color: #1e293b;
+            border: 1px dashed #38bdf8;
+            border-radius: 8px;
+            margin: 20px auto;
+            text-align: center;
+            line-height: 600px;
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        /* شاشات الكمبيوتر الكبيرة لتوزيع البنرات على الجوانب احترافياً */
+        @media (min-width: 1150px) {
+            .main-layout {
+                position: relative;
+                padding: 0 180px;
+                box-sizing: border-box;
+            }
+            .container {
+                width: 100%;
+            }
+            .side-banner {
+                position: absolute;
+                top: 0;
+                margin: 0;
+            }
+            .side-left {
+                left: 0;
+            }
+            .side-right {
+                right: 0;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>أهلاً بك في موقعنا</h1>
-        <p>جاري تجهيز روابط البث المباشر لمباراة منتخب مصر بجودة عالية وبدون تقطيع...</p>
+    <div class="main-layout">
         
-        <div id="timer-container" class="timer-box">
-            انتظر <span id="countdown">3</span> ثوانٍ...
+        <!-- 1️⃣ مكان البانر الإعلاني العلوي -->
+        <div class="top-banner">
+            مكان إعلان بنر علوي (728x90)
         </div>
 
-        <div id="buttons-group" class="buttons-container">
-            <a href="https://pelotaalibre.su/home.php" class="btn btn-primary">اضغط هنا للانتقال للبث المباشر (سيرفر 1)</a>
-            <a href="https://pirlotv.st/" class="btn btn-secondary">اضغط هنا للانتقال للبث المباشر (سيرفر 2)</a>
+        <div class="content-area">
+            
+            <!-- 2️⃣ مكان البانر الجانبي الأيمن -->
+            <div class="side-banner side-right">
+                إعلان جانبي (160x600)
+            </div>
+
+            <!-- الكونتير الأصلي بتاعك بدون أي تعديل في عناصره -->
+            <div class="container">
+                <h1>أهلاً بك في موقعنا</h1>
+                <p>جاري تجهيز روابط البث المباشر لمباراة منتخب مصر بجودة عالية وبدون تقطيع...</p>
+                
+                <div id="timer-container" class="timer-box">
+                    انتظر <span id="countdown">3</span> ثوانٍ...
+                </div>
+
+                <div id="buttons-group" class="buttons-container">
+                    <a href="https://pelotaalibre.su/home.php" class="btn btn-primary" target="_blank">اضغط هنا للانتقال للبث المباشر (سيرفر 1)</a>
+                    <a href="https://pirlotv.st/" class="btn btn-secondary" target="_blank">اضغط هنا للانتقال للبث المباشر (سيرفر 2)</a>
+                </div>
+            </div>
+
+            <!-- 3️⃣ مكان البانر الجانبي الأيسر -->
+            <div class="side-banner side-left">
+                إعلان جانبي (160x600)
+            </div>
+
         </div>
     </div>
 
